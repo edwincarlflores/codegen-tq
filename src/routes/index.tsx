@@ -1,4 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { useQuery } from '@tanstack/react-query'
+import { peopleCountQuery } from '@/data/people'
 import logo from '../logo.svg'
 
 export const Route = createFileRoute('/')({
@@ -6,6 +8,10 @@ export const Route = createFileRoute('/')({
 })
 
 function App() {
+  const { data } = useQuery(peopleCountQuery)
+
+  console.log('data', data?.allPeople?.totalCount)
+
   return (
     <div className="text-center">
       <header className="min-h-screen flex flex-col items-center justify-center bg-[#282c34] text-white text-[calc(10px+2vmin)]">
